@@ -1,0 +1,71 @@
+//mixin
+
+@mixin labelClick {
+  top: -3px;
+  background-color: white;
+  font-size: 1rem;
+  color: $color-secondary;
+  left: -1rem;
+  padding: 0 5px;
+}
+
+//variable
+
+$font-primary: "Roboto", sans-serif;
+$font-secondary: "Jost", sans-serif;
+
+$color-primary: #768492;
+$color-secondary: #131313;
+$white-color: white;
+$terciaire-color: #f3f6fd;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: 16px;
+  color: $color-primary;
+  margin: 0;
+  background-color: $terciaire-color;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.none {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 1.1rem;
+}
+
+.container-form {
+  background-color: $white-color
+}
+
+//import
+
+@import "includes/login-register";
