@@ -12,6 +12,8 @@
             </div>
             <?php if (isset($_GET["firstNameError"])) { ?>
                 <p class="error">Veuillez remplir correctement cette case</p>
+            <?php } else if (isset($_GET["firstName_used"])) { ?>
+                <p class="error">Se prénom est déjà associé à un nom existant</p>
             <?php } ?>
             <div class="column">
                 <input type="text" name="lastName" id="lastName">
@@ -42,7 +44,7 @@
                 <input type="password" name="passwordConfirmed" id="passwordConfirmed">
                 <label for="passwordConfirmed">Confirmer le mot de passe</label>
             </div>
-            <?php if (isset($_GET["confirmedPassword"])) { ?>
+            <?php if (isset($_GET["passwordConfirmed"])) { ?>
                 <p class="error">Veuillez entrer le même mot de de passe</p>
             <?php } else if (isset($_GET["confirmedPasswordError"])) { ?>
                 <p class="error">Veuillez remplir correctement cette case</p>

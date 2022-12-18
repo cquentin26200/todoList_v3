@@ -34,3 +34,28 @@ function getCookie(cName) {
 }
 
 getCookie("checked");
+
+const formLogin = document.querySelector(".login");
+const knowPassword = document.querySelector("#knowPassword");
+const labelShowPassword = document.querySelector(".knowPassword");
+const array = [knowPassword, labelShowPassword];
+const groupShowPassword = document.querySelector(".showPassword");
+const showPassword = document.createElement("p");
+showPassword.classList.add("passwordValue");
+const inputPassword = document.querySelector("#password");
+if (formLogin) {
+  array.forEach((e) => {
+    e.addEventListener("click", () => {
+      if (e.checked == false) {
+        showPassword.remove();
+      } else {
+        groupShowPassword.appendChild(showPassword);
+        showPassword.innerHTML = inputPassword.value;
+
+        inputPassword.addEventListener("input", () => {
+          showPassword.innerHTML = inputPassword.value;
+        });
+      }
+    });
+  });
+}
