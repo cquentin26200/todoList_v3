@@ -19,6 +19,7 @@ inputColumn.forEach((e) => {
   });
 });
 
+//Permet d'avoir la case se souvenir de soi cocher lorsque que le cookie checked existe
 function getCookie(cName) {
   const name = cName;
   const cDecoded = decodeURIComponent(document.cookie);
@@ -59,3 +60,31 @@ if (formLogin) {
     });
   });
 }
+
+const allIcons = document.querySelectorAll(".icons i");
+
+allIcons.forEach((e) => {
+  e.addEventListener("click", () => {
+    e.classList.toggle("iconSelected");
+  });
+});
+
+const titleAside = document.querySelector(".titleAside");
+const titleExample = document.querySelector("#title");
+
+titleExample.addEventListener("input", () => {
+  titleAside.textContent = titleExample.value;
+  if (titleExample.value == "") {
+    titleAside.textContent = "example note";
+  }
+})
+
+const description = document.querySelector(".description");
+const paragraphAside = document.querySelector(".paragraphAside");
+
+description.addEventListener("input", () => {
+  paragraphAside.textContent = description.value;
+  if (description.value == "") {
+    paragraphAside.textContent = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime perferendis nostrum culpa ex perspiciatis provident, illum nemo harum qui animi commodi, magni eum. Optio, soluta perspiciatis et deserunt praesentium ullam!";
+  }
+})

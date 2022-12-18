@@ -47,6 +47,11 @@ img {
   background-color: white;
 }
 
+main.newNote .icons .iconSelected {
+  background-color: #131313;
+  color: white;
+}
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -248,20 +253,33 @@ main.error404 p {
 
 main.newNote {
   padding: 5rem;
+  width: 100%;
 }
 
-main.newNote div {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+main.newNote .primaryInfo {
+  width: 70%;
+}
+
+main.newNote .newNote {
+  width: 87%;
+}
+
+main.newNote .header-main {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main.newNote .header-main span + span {
+  margin-left: 4rem;
+}
+
+main.newNote .form-control {
+  margin-bottom: 1.5rem;
 }
 
 main.newNote div div {
   color: #131313;
-}
-
-main.newNote div div:first-of-type {
-  width: 80%;
 }
 
 main.newNote div div:first-of-type a {
@@ -279,20 +297,6 @@ main.newNote div div:first-of-type a {
 
 main.newNote div div:first-of-type a i {
   margin-right: 5px;
-}
-
-main.newNote div div:last-of-type {
-  width: 20%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-main.newNote div div:last-of-type span {
-  margin-left: 4rem;
 }
 
 main.newNote div div h1 {
@@ -313,16 +317,17 @@ main.newNote form h2 {
   font-weight: normal;
   font-size: 1.8rem;
   text-transform: capitalize;
+  margin-top: 0;
 }
 
 main.newNote #title {
   width: 100%;
   height: 4rem;
+  padding: 0 1rem;
   border-radius: 8px;
   outline: none;
-  -webkit-transition: .25s;
-  transition: .25s;
-  padding: 0 1rem;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
 
 main.newNote #title:focus {
@@ -330,7 +335,10 @@ main.newNote #title:focus {
           box-shadow: 0px 0px 0px 1px black;
 }
 
-main.newNote #title, main.newNote #date, main.newNote .description, main.newNote #priority {
+main.newNote #title,
+main.newNote #date,
+main.newNote .description,
+main.newNote #priority {
   border: 1px solid #dcdddf;
 }
 
@@ -338,6 +346,18 @@ main.newNote .description {
   padding: 1rem;
   line-height: 2;
   font-size: 1.5rem;
+  margin-bottom: 0;
+  height: 10rem;
+  width: 100%;
+  border-radius: 8px;
+  outline: none;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+main.newNote .description:focus {
+  -webkit-box-shadow: 0px 0px 0px 1px black;
+          box-shadow: 0px 0px 0px 1px black;
 }
 
 main.newNote #date {
@@ -345,6 +365,15 @@ main.newNote #date {
   font-size: 1.5rem;
   width: 100%;
   padding: 1rem;
+  border-radius: 8px;
+  outline: none;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+}
+
+main.newNote #date:focus {
+  -webkit-box-shadow: 0px 0px 0px 1px black;
+          box-shadow: 0px 0px 0px 1px black;
 }
 
 main.newNote .icons i {
@@ -358,5 +387,87 @@ main.newNote .icons i {
 
 main.newNote .icons i + i {
   margin-left: 1rem;
+}
+
+main.newNote #priority {
+  width: 100%;
+  padding: 1rem;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.25s;
+}
+
+main.newNote #priority:focus {
+  -webkit-box-shadow: 0px 0px 0px 1px black;
+          box-shadow: 0px 0px 0px 1px black;
+}
+
+main.newNote .option {
+  margin-top: 1rem;
+}
+
+main.newNote .option button {
+  padding: 1rem 1.3rem;
+  border-radius: 8px;
+  border: 1px solid #131313;
+  text-transform: capitalize;
+}
+
+main.newNote .option button:first-of-type i {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+main.newNote .option button i {
+  margin-right: 5px;
+}
+
+main.newNote .option .save {
+  background-color: #131313;
+  color: white;
+}
+
+main.newNote aside {
+  margin-left: 10rem;
+  width: 30%;
+  margin-top: 8rem;
+}
+
+main.newNote aside .header-aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main.newNote aside .header-aside i:first-of-type {
+  color: #87baf5;
+  font-size: 2.5rem;
+  border: 1px solid #87baf5;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+main.newNote aside .header-aside i:last-of-type {
+  cursor: pointer;
+  font-size: 1.7rem;
+  color: #768492;
+}
+
+main.newNote aside h3 {
+  text-transform: capitalize;
+  font-weight: normal;
+  font-size: 2.3rem;
+}
+
+main.newNote aside p {
+  color: #768492;
+  line-height: 1.8;
 }
 /*# sourceMappingURL=style.css.map */

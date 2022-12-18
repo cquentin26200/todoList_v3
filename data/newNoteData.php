@@ -9,7 +9,6 @@ $icons = [
 ];
 
 $priority = [
-    "default",
     "very low",
     "low",
     "medium",

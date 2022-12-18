@@ -1,11 +1,27 @@
 main.newNote {
   padding: 5rem;
+  width: 100%;
+  .primaryInfo {
+    width: 70%;
+  }
+  .newNote {
+    width: 87%;
+  }
+  .header-main {
+    justify-content: space-between;
+    span {
+      + span {
+        margin-left: 4rem;
+      }
+    }
+  }
+  .form-control {
+    margin-bottom: 1.5rem;
+  }
   div {
-    align-items: center;
     div {
       color: $color-secondary;
       &:first-of-type {
-        width: 80%;
         a {
           align-items: center;
           border-radius: 8px;
@@ -16,14 +32,6 @@ main.newNote {
           i {
             margin-right: 5px;
           }
-        }
-      }
-      &:last-of-type {
-        width: 20%;
-        display: flex;
-        justify-content: flex-end;
-        span {
-          margin-left: 4rem;
         }
       }
       h1 {
@@ -43,45 +51,110 @@ main.newNote {
       font-weight: normal;
       font-size: 1.8rem;
       text-transform: capitalize;
+      margin-top: 0;
     }
   }
   #title {
     width: 100%;
     height: 4rem;
-    border-radius: 8px;
-    outline: none;
-    transition: .25s;
     padding: 0 1rem;
-    &:focus {
-      box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 1);
-    }
+    @include border;
   }
-  #title, #date, .description, #priority {
+  #title,
+  #date,
+  .description,
+  #priority {
     border: 1px solid #dcdddf;
   }
   .description {
     padding: 1rem;
     line-height: 2;
     font-size: 1.5rem;
+    margin-bottom: 0;
+    height: 10rem;
+    width: 100%;
+    @include border;
   }
   #date {
     color: $color-primary;
     font-size: 1.5rem;
     width: 100%;
     padding: 1rem;
+    @include border;
   }
 
   .icons {
     i {
-        color: $color-secondary;
-        padding: 1rem 1.3rem;
-        background-color: $white-color;
-        border: 1px solid $color-secondary;
-        border-radius: 10px;
-        +i {
-            margin-left: 1rem;
+      color: $color-secondary;
+      padding: 1rem 1.3rem;
+      background-color: $white-color;
+      border: 1px solid $color-secondary;
+      border-radius: 10px;
+      + i {
+        margin-left: 1rem;
+      }
+      cursor: pointer;
+    }
+  }
+  #priority {
+    width: 100%;
+    padding: 1rem;
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    transition: 0.25s;
+    @include border;
+  }
+  .option {
+    margin-top: 1rem;
+    button {
+      padding: 1rem 1.3rem;
+      border-radius: 8px;
+      border: 1px solid $color-secondary;
+      text-transform: capitalize;
+      &:first-of-type {
+        i {
+          transform: rotate(180deg);
         }
-        cursor: pointer;
+      }
+      i {
+        margin-right: 5px;
+      }
+    }
+    .save {
+      background-color: $color-secondary;
+      color: $white-color;
+    }
+  }
+  aside {
+    margin-left: 10rem;
+    width: 30%;
+    margin-top: 8rem;
+    .header-aside {
+      display: flex;
+      justify-content: space-between;
+      i {
+        &:first-of-type {
+          color: $four-color;
+          font-size: 2.5rem;
+          border: 1px solid $four-color;
+          padding: 1rem;
+          border-radius: 10px;
+        }
+        &:last-of-type {
+          cursor: pointer;
+          font-size: 1.7rem;
+          color: $color-primary;
+        }
+      }
+    }
+    h3 {
+      text-transform: capitalize;
+      font-weight: normal;
+      font-size: 2.3rem;
+    }
+    p {
+      color: $color-primary;
+      line-height: 1.8;
     }
   }
 }
