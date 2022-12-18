@@ -1,0 +1,30 @@
+main.error404 {
+    text-align: center;
+
+    img {
+        width: 60rem;
+    }
+
+    a {
+        display: block;
+        width: max-content;
+        margin: 3rem auto 0 auto;
+        background-color: $color-secondary;
+        padding: 1rem;
+        border-radius: 10px;
+        color: white;
+
+        i {
+            margin-right: 5px;
+        }
+    }
+
+    h1 {
+        margin: 3rem 0 0 0;
+        color: $color-secondary;
+        font-weight: normal;
+    }
+    p {
+        margin-top: 1rem;
+    }
+}
