@@ -2,7 +2,7 @@
 <?php include_once "../includes/header.php" ?>
 
 <div class="container-form">
-    <form action="../verification/verif_register.php" method="POST" class="login">
+    <form action="../verification/verif_login.php" method="POST" class="login">
         <h1>S'identifier</h1>
         <p class="text-center">Connecter vous pour rester connecté.</p>
         <div class="column">
@@ -30,7 +30,7 @@
                 <span class="check"></span>
             </div>
         </div>
-        <input type="submit" value="S'inscrire" class="sendForm">
+        <input type="submit" value="Se connecter" class="sendForm">
         <p class="text-center haveAccount">Vous n'avez pas de compte ? <a href="register.php">S'inscrire</a></p>
     </form>
 </div>

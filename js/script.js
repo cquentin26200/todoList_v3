@@ -104,11 +104,10 @@ const priority = document.querySelector("#priority");
 
 reset.addEventListener("click", () => {
   const iconSelected = document.querySelector(".iconSelected");
-  if (iconSelected) {
-    iconSelected.classList.remove("iconSelected");
-  }
+  const allIcons = document.querySelectorAll(".icons i");
+  iconSelected.classList.remove("iconSelected");
+  allIcons[0].classList.add("iconSelected");
   date.value = "2022-01-01";
-  priority.querySelectorAll("option")[0].selected = true;
   allInputReset.forEach((e) => {
     e.value = "";
   });

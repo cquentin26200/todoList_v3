@@ -48,8 +48,14 @@
                     </select>
                 </div>
                 <div class="option form-control">
-                    <span class="reset"><i class="fa-solid fa-forward"></i>reset</span>
-                    <a href="verification/verif_newNote.php" class="save"><i class="fa-solid fa-cloud-arrow-down"></i>add</a>
+                    <div class="groupReset">
+                        <input type="reset" value="reset" class="reset">
+                        <i class="fa-solid fa-forward"></i>
+                    </div>
+                    <div class="groupSave">
+                        <input class="save" type="submit" value="add">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </div>
                 </div>
             </form>
         </div>
