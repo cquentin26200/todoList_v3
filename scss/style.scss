@@ -30,6 +30,7 @@ body {
   color: $color-primary;
   margin: 0;
   background-color: $terciaire-color;
+  padding: 5rem 0;
 }
 
 ul {
@@ -70,6 +71,7 @@ img {
 main.newNote .icons .iconSelected {
   background-color: #131313;
   color: $white-color;
+  box-shadow: 0 0 0 3px $color-primary;
 }
 
 @mixin border {
@@ -86,3 +88,4 @@ main.newNote .icons .iconSelected {
 @import "includes/login-register";
 @import "includes/error404";
 @import "includes/newNote";
+@import "includes/newNoteAside";

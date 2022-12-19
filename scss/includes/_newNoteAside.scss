@@ -1,0 +1,129 @@
+aside {
+    margin-left: 10rem;
+    width: 30%;
+    margin-top: 8rem;
+    border-radius: 10px;
+    transition: color 0.25s, background-color 0.75s;
+    .container {
+      padding: 2rem;
+      nav {
+        top: 3rem;
+        position: absolute;
+        right: 0;
+        ul.menuBurger {
+          box-shadow: 0px 5px 10px 0px rgba($color: #000000, $alpha: 0.3);
+          background-color: $white-color;
+          border-radius: 15px;
+          li {
+            &:active {
+              background-color: $color-secondary;
+              a,i {
+                color: $white-color;
+              }
+            }
+            a {
+              color: $color-secondary;
+              border-radius: unset;
+              border: none;
+              text-transform: capitalize;
+              width: 13rem;
+              justify-content: flex-start;
+              i {
+                border: none;
+              }
+            }
+            &:first-of-type {
+              a {
+                padding-bottom: 0;
+              }
+            }
+            &:last-of-type {
+              a {
+                padding-top: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      background-color: $color-secondary;
+      .header-aside .changeIcon,
+      .header-aside .activeMenuBurger {
+        color: $white-color;
+        border-color: $white-color;
+      }
+      p,
+      h3 {
+        color: $white-color;
+      }
+      .userDate {
+        p,
+        i {
+          color: $white-color;
+        }
+      }
+      .userDate {
+        .after {
+          transform: translateY(-1rem);
+        }
+      }
+    }
+    .paragraphAside {
+      height: 17rem;
+    }
+    .header-aside {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      i {
+        &:first-of-type {
+          color: $color-secondary;
+          font-size: 2.5rem;
+          border: 1px solid $color-secondary;
+          padding: 1rem;
+          border-radius: 10px;
+        }
+        &:last-of-type {
+          cursor: pointer;
+          font-size: 1.7rem;
+          color: $color-primary;
+        }
+      }
+    }
+    h3 {
+      text-transform: capitalize;
+      color: $color-secondary;
+      font-weight: normal;
+      font-size: 2.3rem;
+    }
+    p {
+      color: $color-primary;
+      line-height: 1.8;
+    }
+    .userDate {
+      margin-top: 20rem;
+      div {
+        justify-content: space-between;
+        padding: 0 2rem;
+      }
+      p {
+        font-size: 14px;
+        color: $color-secondary;
+        text-transform: capitalize;
+        font-weight: bold;
+        i {
+          color: $color-secondary;
+          margin-right: 5px;
+        }
+      }
+      .after {
+        transition: 0.3s;
+        background-color: $color-secondary;
+        width: 100%;
+        height: 4px;
+        display: block;
+        border-radius: 5px;
+      }
+    }
+  }

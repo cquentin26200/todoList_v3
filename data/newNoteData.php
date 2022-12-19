@@ -9,9 +9,11 @@ $icons = [
 ];
 
 $priority = [
-    "very low",
-    "low",
-    "medium",
-    "high",
-    "very high"
+    "level" => [
+        "very low",
+        "low",
+        "medium",
+        "high",
+        "very high"
+    ],
 ];

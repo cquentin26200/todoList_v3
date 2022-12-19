@@ -40,34 +40,30 @@
                     <h2>priority</h2>
                     <label for="priotiry"></label>
                     <select name="priority" id="priority">
-                        <option value="default" default>-- default --</option>
-                        <?php foreach ($priority as $el) { ?>
-                            <option value="<?= $el ?>"><?= $el ?></option>
+                        <option value="default" selected>-- default --</option>
+                        <?php $count = 0 ?>
+                        <?php foreach ($priority["level"] as $el) { ?>
+                            <option class="<?= $count++ ?>" value="<?= $el ?>"><?= $el ?></option>
                         <?php } ?>
                     </select>
                 </div>
-                <div class="option">
-                    <button><i class="fa-solid fa-forward"></i>reset</button>
-                    <button class="save"><i class="fa-solid fa-cloud-arrow-down"></i>save</button>
+                <div class="option form-control">
+                    <span class="reset"><i class="fa-solid fa-forward"></i>reset</span>
+                    <a href="verification/verif_newNote.php" class="save"><i class="fa-solid fa-cloud-arrow-down"></i>add</a>
                 </div>
             </form>
         </div>
-        <aside>
-            <div>
-                <div class="header-aside">
-                    <i class="activeMenuBurger fa-regular fas fa-calendar-minus"></i>
-                    <i class="fa-solid fa-ellipsis"></i>
-                </div>
-                <nav>
-                    <ul class="menuBurger none">
-                        <li><a href="#">view</a></li>
-                        <li><a href="#">delete</a></li>
-                    </ul>
-                </nav>
-                <h3 class="titleAside">example note</h3>
-                <p class="paragraphAside">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum debitis aut eum, quam eius sint consequuntur fuga sequi ducimus vel cumque perspiciatis, sit ratione accusantium recusandae dignissimos. Expedita, voluptatem veritatis?</p>
-            </div>
-        </aside>
+        <?php include_once "includes/aside.php" ?>
+    </div>
+    <div class="flex policy">
+        <div class="flex">
+            <p>privacy policy</p>
+            <p>terms of use</p>
+        </div>
+        <div class="flex">
+            <p>2022@</p>
+            <p class="notePlus">NotePlus.</p>
+        </div>
     </div>
 </main>
 <script src="js/script.js"></script>

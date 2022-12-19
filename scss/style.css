@@ -8,6 +8,7 @@ body {
   color: #768492;
   margin: 0;
   background-color: #f3f6fd;
+  padding: 5rem 0;
 }
 
 ul {
@@ -50,6 +51,8 @@ img {
 main.newNote .icons .iconSelected {
   background-color: #131313;
   color: white;
+  -webkit-box-shadow: 0 0 0 3px #768492;
+          box-shadow: 0 0 0 3px #768492;
 }
 
 body {
@@ -252,7 +255,8 @@ main.error404 p {
 }
 
 main.newNote {
-  padding: 5rem;
+  padding: 0 5rem;
+  height: 100%;
   width: 100%;
 }
 
@@ -262,6 +266,15 @@ main.newNote .primaryInfo {
 
 main.newNote .newNote {
   width: 87%;
+}
+
+main.newNote .moreInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main.newNote .header-main {
@@ -389,6 +402,11 @@ main.newNote .icons i + i {
   margin-left: 1rem;
 }
 
+main.newNote .icons i:hover {
+  background-color: #131313;
+  color: white;
+}
+
 main.newNote #priority {
   width: 100%;
   padding: 1rem;
@@ -407,37 +425,149 @@ main.newNote #priority:focus {
 }
 
 main.newNote .option {
-  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3rem;
 }
 
-main.newNote .option button {
+main.newNote .option span,
+main.newNote .option a {
   padding: 1rem 1.3rem;
   border-radius: 8px;
   border: 1px solid #131313;
   text-transform: capitalize;
 }
 
-main.newNote .option button:first-of-type i {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-}
-
-main.newNote .option button i {
+main.newNote .option span i,
+main.newNote .option a i {
   margin-right: 5px;
 }
 
 main.newNote .option .save {
   background-color: #131313;
   color: white;
+  margin-left: 1rem;
+  cursor: pointer;
 }
 
-main.newNote aside {
+main.newNote .option .reset {
+  cursor: pointer;
+}
+
+main.newNote .option .reset i {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+main.newNote .policy {
+  margin-top: 21rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-transform: capitalize;
+}
+
+main.newNote .policy p {
+  color: #768492;
+}
+
+main.newNote .policy p:first-of-type {
+  margin-right: 1rem;
+}
+
+main.newNote .policy .notePlus {
+  color: #131313;
+}
+
+aside {
   margin-left: 10rem;
   width: 30%;
   margin-top: 8rem;
+  border-radius: 10px;
+  -webkit-transition: color 0.25s, background-color 0.75s;
+  transition: color 0.25s, background-color 0.75s;
 }
 
-main.newNote aside .header-aside {
+aside .container {
+  padding: 2rem;
+}
+
+aside .container nav {
+  top: 3rem;
+  position: absolute;
+  right: 0;
+}
+
+aside .container nav ul.menuBurger {
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 15px;
+}
+
+aside .container nav ul.menuBurger li:active {
+  background-color: #131313;
+}
+
+aside .container nav ul.menuBurger li:active a, aside .container nav ul.menuBurger li:active i {
+  color: white;
+}
+
+aside .container nav ul.menuBurger li a {
+  color: #131313;
+  border-radius: unset;
+  border: none;
+  text-transform: capitalize;
+  width: 13rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+aside .container nav ul.menuBurger li a i {
+  border: none;
+}
+
+aside .container nav ul.menuBurger li:first-of-type a {
+  padding-bottom: 0;
+}
+
+aside .container nav ul.menuBurger li:last-of-type a {
+  padding-top: 0;
+}
+
+aside:hover {
+  background-color: #131313;
+}
+
+aside:hover .header-aside .changeIcon,
+aside:hover .header-aside .activeMenuBurger {
+  color: white;
+  border-color: white;
+}
+
+aside:hover p,
+aside:hover h3 {
+  color: white;
+}
+
+aside:hover .userDate p,
+aside:hover .userDate i {
+  color: white;
+}
+
+aside:hover .userDate .after {
+  -webkit-transform: translateY(-1rem);
+          transform: translateY(-1rem);
+}
+
+aside .paragraphAside {
+  height: 17rem;
+}
+
+aside .header-aside {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -446,28 +576,62 @@ main.newNote aside .header-aside {
           justify-content: space-between;
 }
 
-main.newNote aside .header-aside i:first-of-type {
-  color: #87baf5;
+aside .header-aside i:first-of-type {
+  color: #131313;
   font-size: 2.5rem;
-  border: 1px solid #87baf5;
+  border: 1px solid #131313;
   padding: 1rem;
   border-radius: 10px;
 }
 
-main.newNote aside .header-aside i:last-of-type {
+aside .header-aside i:last-of-type {
   cursor: pointer;
   font-size: 1.7rem;
   color: #768492;
 }
 
-main.newNote aside h3 {
+aside h3 {
   text-transform: capitalize;
+  color: #131313;
   font-weight: normal;
   font-size: 2.3rem;
 }
 
-main.newNote aside p {
+aside p {
   color: #768492;
   line-height: 1.8;
+}
+
+aside .userDate {
+  margin-top: 20rem;
+}
+
+aside .userDate div {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 2rem;
+}
+
+aside .userDate p {
+  font-size: 14px;
+  color: #131313;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+aside .userDate p i {
+  color: #131313;
+  margin-right: 5px;
+}
+
+aside .userDate .after {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #131313;
+  width: 100%;
+  height: 4px;
+  display: block;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */

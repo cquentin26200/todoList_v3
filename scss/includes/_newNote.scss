@@ -1,11 +1,16 @@
 main.newNote {
-  padding: 5rem;
+  padding: 0 5rem;
+  height: 100%;
   width: 100%;
   .primaryInfo {
     width: 70%;
   }
   .newNote {
     width: 87%;
+  }
+  .moreInfo {
+    display: flex;
+    align-items: center;
   }
   .header-main {
     justify-content: space-between;
@@ -94,6 +99,10 @@ main.newNote {
         margin-left: 1rem;
       }
       cursor: pointer;
+      &:hover {
+        background-color: $color-secondary;
+        color: $white-color;
+      }
     }
   }
   #priority {
@@ -105,17 +114,14 @@ main.newNote {
     @include border;
   }
   .option {
-    margin-top: 1rem;
-    button {
+    display: flex;
+    margin-top: 3rem;
+    span,
+    a {
       padding: 1rem 1.3rem;
       border-radius: 8px;
       border: 1px solid $color-secondary;
       text-transform: capitalize;
-      &:first-of-type {
-        i {
-          transform: rotate(180deg);
-        }
-      }
       i {
         margin-right: 5px;
       }
@@ -123,38 +129,29 @@ main.newNote {
     .save {
       background-color: $color-secondary;
       color: $white-color;
+      margin-left: 1rem;
+      cursor: pointer;
     }
-  }
-  aside {
-    margin-left: 10rem;
-    width: 30%;
-    margin-top: 8rem;
-    .header-aside {
-      display: flex;
-      justify-content: space-between;
+    .reset {
+      cursor: pointer;
       i {
-        &:first-of-type {
-          color: $four-color;
-          font-size: 2.5rem;
-          border: 1px solid $four-color;
-          padding: 1rem;
-          border-radius: 10px;
-        }
-        &:last-of-type {
-          cursor: pointer;
-          font-size: 1.7rem;
-          color: $color-primary;
-        }
+        transform: rotate(180deg);
       }
     }
-    h3 {
-      text-transform: capitalize;
-      font-weight: normal;
-      font-size: 2.3rem;
-    }
+  }
+
+  .policy {
+    margin-top: 21rem;
+    justify-content: space-between;
+    text-transform: capitalize;
     p {
       color: $color-primary;
-      line-height: 1.8;
+      &:first-of-type {
+        margin-right: 1rem;
+      }
+    }
+    .notePlus {
+      color: $color-secondary;
     }
   }
 }

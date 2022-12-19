@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../todoList_v3/scss/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7a994d3c9f.js" crossorigin="anonymous"></script>
 </head>
 
