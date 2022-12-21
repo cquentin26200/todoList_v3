@@ -83,6 +83,7 @@ const titleAside = document.querySelector(".titleAside");
 const titleExample = document.querySelector("#title");
 
 if (titleExample) {
+  titleAside.textContent = titleExample.value;
   titleExample.addEventListener("input", () => {
     titleAside.textContent = titleExample.value;
     if (titleExample.value == "") {
@@ -95,6 +96,7 @@ const description = document.querySelector(".description");
 const paragraphAside = document.querySelector(".paragraphAside");
 
 if (description) {
+  paragraphAside.textContent = description.value;
   description.addEventListener("input", () => {
     paragraphAside.textContent = description.value;
     if (description.value == "") {
@@ -111,6 +113,8 @@ const priority = document.querySelector("#priority");
 
 if (reset) {
   reset.addEventListener("click", () => {
+    description.textContent = "";
+    description.placeholder = "Enter a text";
     const iconSelected = document.querySelector(".iconSelected");
     const allIcons = document.querySelectorAll(".icons i");
     iconSelected.classList.remove("iconSelected");
