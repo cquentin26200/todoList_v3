@@ -38,7 +38,6 @@ try {
         header("Location: ../login/register.php?" . ($firstName_error == "true" ? "&firstNameError=error" : "") . ($lastName_error == "true" ? "&lastNameError=error" : "") . ($email_error == "true" ? "&emailError=error" : "") . ($password_error == "true" ? "&passwordError=error" : "") . ($passwordConfirmed_error == "true" ? "&passwordConfirmedError=error" : "") . ($checked_error == "true" ? "&checkedError=error" : ""));
     } else {
         $ligne = $resultat2->fetch();
-
         $same_password = "false";
         $email_error = "false";
         $first_name = "false";
@@ -54,8 +53,8 @@ try {
         if (($ligne["firstName"] == htmlentities($_POST["firstName"])) && $ligne["lastName"] == htmlentities($_POST["lastName"])) {
             $first_name = "true";
         }
-        if (($_POST["password"] != $_POST["passwordConfirmed"]) || ($ligne["email"] == $_POST["email"]) || ($ligne["firstName"] == htmlentities($_POST["firstName"]))) {
-            header("Location: ../login/register.php?". ($same_password == "true" ? "&passwordConfirmed=error" : "") . ($email_used == "true" ? "&email_used=error" : "") . ($first_name == "true" ? "&firstName_used=error" : ""));
+        if (($_POST["password"] != $_POST["passwordConfirmed"]) || ($ligne["email"] == $_POST["email"]) || ($ligne["firstName"] == htmlentities($_POST["firstName"])) && $ligne["lastName"] == htmlentities($_POST["lastName"])) {
+            header("Location: ../login/register.php?" . ($same_password == "true" ? "&passwordConfirmed=error" : "") . ($email_used == "true" ? "&email_used=error" : "") . ($first_name == "true" ? "&firstName_used=error" : ""));
         }
 
         if (($ligne["email"] != $_POST["email"]) && $_POST["password"] == $_POST["passwordConfirmed"]) {

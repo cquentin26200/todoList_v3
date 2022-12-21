@@ -1,11 +1,21 @@
-<?php session_start() ?>
-<?php $title = "New note" ?>
-<?php include_once "includes/header.php" ?>
-<?php 
+<?php session_start();
+$title = "New note";
+include_once "../includes/header.php";
 $_SESSION["idIcon"] = uniqid();
+
+try {
+    $base = new PDO('mysql:host=127.0.0.1;dbname=todoList_v3', 'root', '');
+    $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "SELECT * FROM note WHERE id_note = :id_note";
+    $resultat = $base->prepare($sql);
+    $resultat->execute(array("id_note" => $_POST["edit"]));
+} catch (Exception $e) {
+    die('Erreur : ' . $e->getMessage());
+}
+$ligne = $resultat->fetch();
 ?>
 
-<main class="newNote">
+<main class="edit">
     <div class="flex header-main">
         <div class="flex newNote">
             <h1>new note</h1>
@@ -18,36 +28,37 @@ $_SESSION["idIcon"] = uniqid();
     </div>
     <div class="flex">
         <div class="primaryInfo">
-            <form action="verification/verif_newNote.php" method="post">
+            <form action="../verification/verif_edit.php" method="post">
+                <input type="hidden" name="edit" value="<?= $_POST["edit"] ?>">
                 <input type="hidden" name="color" class="asideHidden">
                 <div class="form-control">
                     <h2>title</h2>
                     <label for="title"></label>
-                    <input type="text" name="title" id="title" placeholder="Example Note">
+                    <input type="text" name="title" id="title" value="<?= $ligne["title"] ?>">
                 </div>
                 <div class="form-control">
                     <h2>description</h2>
-                    <textarea name="description" class="description" cols="30" rows="10" placeholder="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime perferendis nostrum culpa ex perspiciatis provident, illum nemo harum qui animi commodi, magni eum. Optio, soluta perspiciatis et deserunt praesentium ullam!"></textarea>
+                    <textarea name="description" class="description" cols="30" rows="10"><?= $ligne["description"] ?></textarea>
                 </div>
                 <div class="form-control">
                     <h2>reminder date</h2>
                     <label for="date"></label>
-                    <input type="date" name="date" id="date" value="2022-01-01">
+                    <input type="date" name="date" id="date" value="<?= $ligne["date"] ?>">
                 </div>
                 <div class="icons form-control">
                     <h2>icon</h2>
-                    <?php include_once "data/newNoteData.php" ?>
+                    <?php include_once "../data/newNoteData.php" ?>
                     <?php foreach ($icons as $el) { ?>
-                        <i class="<?= $el ?>"></i>
+                        <i class="<?= $el ?> <?= $el == $ligne["icon"] ? "iconSelected" : "" ?>"></i>
                     <?php } ?>
                 </div>
                 <div class="form-control">
                     <h2>priority</h2>
                     <label for="priotiry"></label>
                     <select name="priority" id="priority">
-                        <option value="default" selected>-- default --</option>
+                        <option value="default">-- default --</option>
                         <?php foreach ($priority["level"] as $el) { ?>
-                            <option value="<?= $el ?>"><?= $el ?></option>
+                            <option value="<?= $el ?>" <?= $el == $ligne["priority"] ? "selected" : "" ?>><?= $el ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -57,14 +68,14 @@ $_SESSION["idIcon"] = uniqid();
                         <i class="fa-solid fa-forward"></i>
                     </div>
                     <div class="groupSave">
-                        <input class="save" type="submit" value="add">
+                        <input class="save" type="submit" value="change">
                         <i class="fa-solid fa-cloud-arrow-down"></i>
                     </div>
                 </div>
                 <input type="hidden" name="icon" class="changeIconAside" value="fa-regular fas fa-calendar-minus">
             </form>
         </div>
-        <?php include_once "includes/aside.php" ?>
+        <?php include_once "../includes/aside.php" ?>
     </div>
     <div class="flex policy">
         <div class="flex">
@@ -77,7 +88,8 @@ $_SESSION["idIcon"] = uniqid();
         </div>
     </div>
 </main>
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 </body>
 
 </html>
+<?php $resultat->closeCursor(); ?>

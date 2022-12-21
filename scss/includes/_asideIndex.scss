@@ -1,0 +1,86 @@
+main.home {
+  width: 100%;
+  height: 100vh;
+  > div {
+    padding: 3rem;
+    background-color: $white-color;
+    > div.grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    div.aside {
+      overflow: hidden;
+      background-color: $white-color;
+      margin: 0 2rem 0 0;
+      height: max-content;
+      .container {
+        padding-bottom: 0;
+      }
+      width: 100%;
+      .userDate {
+        margin: 0;
+      }
+      .paragraphAside {
+        margin: 0;
+        overflow: hidden;
+        height: 11rem;
+        word-wrap: break-word;
+      }
+      h3 {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  h1 {
+    margin: 0 0 2rem 0;
+    color: $color-secondary;
+    text-transform: capitalize;
+    font-size: 2.5rem;
+    font-weight: normal;
+  }
+  .viewInfo {
+    z-index: 1;
+    width: 30%;
+    height: max-content;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    animation: animViewShow 1s;
+    left: 50%;
+    text-align: center;
+    box-shadow: 0 0 10px 0px $color-secondary;
+    padding: 2rem;
+    border-radius: 10px;
+    h2,
+    p {
+      text-align: left;
+      word-wrap: break-word;
+    }
+    >div {
+      justify-content: space-between;
+      h2 {
+        margin-top: 0;
+        color: $color-secondary;
+        font-weight: normal;
+      }
+      span {
+        cursor: pointer;
+        transform: rotate(45deg);
+        @include content;
+        &:after {
+          @include content;
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}
+.showViewOpacity {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: #000;
+  opacity: 0.5;
+  transition: .35s;
+}

@@ -20,6 +20,10 @@ $white-color: white;
 $terciaire-color: #f3f6fd;
 $four-color: #87baf5;
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -30,7 +34,6 @@ body {
   color: $color-primary;
   margin: 0;
   background-color: $terciaire-color;
-  padding: 5rem 0;
 }
 
 ul {
@@ -68,7 +71,7 @@ img {
   background-color: $white-color;
 }
 
-main.newNote .icons .iconSelected {
+main:where(.newNote, .edit) .primaryInfo .icons .iconSelected {
   background-color: #131313;
   color: $white-color;
   box-shadow: 0 0 0 3px $color-primary;
@@ -83,9 +86,38 @@ main.newNote .icons .iconSelected {
   }
 }
 
+@mixin content {
+  content: "";
+  display: block;
+  background-color: $color-primary;
+  width: 1px;
+  height: 20px;
+}
+
+@keyframes animViewShow {
+  from {
+    top: 45%;
+  }
+
+  to {
+    top: 50%;
+  }
+}
+
+@keyframes animViewHide {
+  0% {
+    top: 50%;
+  }
+
+  50% {
+    top: 45%;
+  }
+}
+
 //import
 
 @import "includes/login-register";
 @import "includes/error404";
 @import "includes/newNote";
 @import "includes/newNoteAside";
+@import "includes/asideIndex";

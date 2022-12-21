@@ -21,15 +21,14 @@ inputColumn.forEach((e) => {
 
 //Permet d'avoir la case se souvenir de soi cocher lorsque que le cookie checked existe
 function getCookie(cName) {
-  const name = cName;
   const cDecoded = decodeURIComponent(document.cookie);
   const cArr = cDecoded.split("; ");
   const checkbox = document.getElementById("condition");
   let res;
   cArr.forEach((val) => {
-    if (val.startsWith(name)) res = val.substring(name.length);
+    if (val.startsWith(cName)) res = val.substring(cName.length);
   });
-  if (res) {
+  if (res && checkbox) {
     checkbox.checked = true;
   }
 }
@@ -61,82 +60,105 @@ if (formLogin) {
   });
 }
 
-const allIcons = document.querySelectorAll(".icons i");
-allIcons[0].classList.add("iconSelected");
-allIcons.forEach((e) => {
-  e.addEventListener("click", () => {
-    const changeIcon = document.querySelector(".changeIcon");
-    const iconSelected = document.querySelector(".iconSelected");
-    changeIcon.className = `changeIcon ${e.className}`;
-    iconSelected.classList.remove("iconSelected");
-    e.classList.add("iconSelected");
-    if (!e.classList.contains("iconSelected")) {
+const allIcons = document.querySelectorAll(".newNote .icons i");
+if (allIcons[0]) {
+  allIcons[0].classList.add("iconSelected");
+  allIcons.forEach((e) => {
+    const changeIcon = document.querySelector("#changeIcon");
+    const changeIconAside = document.querySelector(".changeIconAside");
+    e.addEventListener("click", () => {
+      const iconSelected = document.querySelector(".iconSelected");
+      changeIcon.className = `${e.className}`;
+      changeIconAside.value = changeIcon.className;
+      iconSelected.classList.remove("iconSelected");
       e.classList.add("iconSelected");
-    }
+      if (!e.classList.contains("iconSelected")) {
+        e.classList.add("iconSelected");
+      }
+    });
   });
-});
+}
 
 const titleAside = document.querySelector(".titleAside");
 const titleExample = document.querySelector("#title");
 
-titleExample.addEventListener("input", () => {
-  titleAside.textContent = titleExample.value;
-  if (titleExample.value == "") {
-    titleAside.textContent = "example note";
-  }
-});
+if (titleExample) {
+  titleExample.addEventListener("input", () => {
+    titleAside.textContent = titleExample.value;
+    if (titleExample.value == "") {
+      titleAside.textContent = "example note";
+    }
+  });
+}
 
 const description = document.querySelector(".description");
 const paragraphAside = document.querySelector(".paragraphAside");
 
-description.addEventListener("input", () => {
-  paragraphAside.textContent = description.value;
-  if (description.value == "") {
-    paragraphAside.textContent =
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum debitis aut eum, quam eius sint consequuntur fuga sequi ducimus vel cumque perspiciatis, sit ratione accusantium recusandae dignissimos. Expedita, voluptatem veritatis?";
-  }
-});
+if (description) {
+  description.addEventListener("input", () => {
+    paragraphAside.textContent = description.value;
+    if (description.value == "") {
+      paragraphAside.textContent =
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum debitis aut eum, quam eius sint consequuntur fuga sequi ducimus vel cumque perspiciatis, sit ratione accusantium recusandae dignissimos. Expedita, voluptatem veritatis?";
+    }
+  });
+}
 
 const reset = document.querySelector(".reset");
 const date = document.querySelector("#date");
 const allInputReset = [description, titleExample];
 const priority = document.querySelector("#priority");
 
-reset.addEventListener("click", () => {
-  const iconSelected = document.querySelector(".iconSelected");
-  const allIcons = document.querySelectorAll(".icons i");
-  iconSelected.classList.remove("iconSelected");
-  allIcons[0].classList.add("iconSelected");
-  date.value = "2022-01-01";
-  allInputReset.forEach((e) => {
-    e.value = "";
+if (reset) {
+  reset.addEventListener("click", () => {
+    const iconSelected = document.querySelector(".iconSelected");
+    const allIcons = document.querySelectorAll(".icons i");
+    iconSelected.classList.remove("iconSelected");
+    allIcons[0].classList.add("iconSelected");
+    date.value = "2022-01-01";
+    allInputReset.forEach((e) => {
+      e.value = "";
+    });
+    paragraphAside.textContent =
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum debitis aut eum, quam eius sint consequuntur fuga sequi ducimus vel cumque perspiciatis, sit ratione accusantium recusandae dignissimos. Expedita, voluptatem veritatis?";
+    titleAside.textContent = "example note";
   });
-  paragraphAside.textContent =
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum debitis aut eum, quam eius sint consequuntur fuga sequi ducimus vel cumque perspiciatis, sit ratione accusantium recusandae dignissimos. Expedita, voluptatem veritatis?";
-  titleAside.textContent = "example note";
-});
+}
 
-const activeMenuBurger = document.querySelector(".activeMenuBurger");
-const menuBurger = document.querySelector(".menuBurger");
+const activeMenuBurger = document.querySelectorAll(".activeMenuBurger");
+const menuBurger = document.querySelectorAll(".menuBurger");
 
-activeMenuBurger.addEventListener("click", () => {
-  menuBurger.classList.toggle("none");
+const showInfo = document.createElement("div");
+showInfo.className = "viewInfo";
+const main = document.querySelector("main");
+const paragraphe = document.createElement("p");
+const title = document.createElement("h2");
+const hideView = document.createElement("span");
+
+document.body.addEventListener("click", (event) => {
+  if (event.target.classList.contains("activeMenuBurger")) {
+    event.target.nextElementSibling
+      .querySelector(".menuBurger")
+      .classList.toggle("none");
+  } else {
+    if (event.target.parentElement.querySelector(".menuBurger")) {
+      const test = document.querySelectorAll(".menuBurger");
+      test.forEach((e) => {
+        e.classList.add("none");
+      });
+    }
+  }
 });
 
 const allDifficulty = document.querySelector("#priority");
-const changeIcon = document.querySelector(".changeIcon");
+const changeIcon = document.querySelector("#changeIcon");
 const userDateAfter = document.querySelector(".userDate .after");
 const aside = document.querySelector("aside");
 const userDateParagraphe = document.querySelectorAll(".userDate p i");
 
 function changePriority(colorPrimary) {
-  userDateParagraphe.forEach((e) => {
-    if (allDifficulty[allDifficulty.selectedIndex].classList.value != "1") {
-      e.style.color = "#131313";
-    } else {
-      e.style.color = "#87baf5";
-    }
-  });
+  const asideHidden = document.querySelector(".asideHidden");
+  asideHidden.value = colorPrimary;
   changeIcon.style.color = colorPrimary;
   changeIcon.style.borderColor = colorPrimary;
   userDateAfter.style.backgroundColor = colorPrimary;
@@ -152,26 +174,87 @@ function changePriority(colorPrimary) {
     aside.style.backgroundColor = "unset";
     changeIcon.style.color = colorPrimary;
     changeIcon.style.borderColor = colorPrimary;
+    userDateParagraphe.forEach((e) => {
+      e.style.color = "black";
+    });
   });
 }
 
-allDifficulty.addEventListener("change", () => {
-  switch (allDifficulty[allDifficulty.selectedIndex].classList.value) {
-    case "0":
-      changePriority("#8ac3a3");
-      break;
-    case "1":
-      changePriority("#87baf5");
-      break;
-    case "2":
-      changePriority("#f0864a");
-      break;
-    case "3":
-      changePriority("#f674ad");
-      break;
-    case "4":
-      changePriority("#aa87f5");
-      break;
-    default:
+const divAside = document.querySelectorAll("div .aside");
+
+divAside.forEach((e) => {
+  const icons = e.querySelector(".changeIcon");
+  const iconParagraphe = e.querySelectorAll("p i");
+  iconParagraphe.forEach((a) => (a.style.color = e.classList[1]));
+  e.addEventListener("mouseenter", () => {
+    iconParagraphe.forEach((a) => (a.style.color = "white"));
+    icons.style.borderColor = "white";
+    icons.style.color = "white";
+    e.style.backgroundColor = e.classList[1];
+  });
+  e.addEventListener("mouseleave", () => {
+    iconParagraphe.forEach((a) => (a.style.color = e.classList[1]));
+    e.style.backgroundColor = "unset";
+    icons.style.borderColor = e.classList[1];
+    icons.style.color = e.classList[1];
+  });
+});
+
+if (allDifficulty) {
+  allDifficulty.addEventListener("change", changeColor);
+  changeColor();
+  function changeColor() {
+    switch (allDifficulty[allDifficulty.selectedIndex].value) {
+      case "very low":
+        changePriority("#8ac3a3");
+        break;
+      case "low":
+        changePriority("#87baf5");
+        break;
+      case "medium":
+        changePriority("#f0864a");
+        break;
+      case "high":
+        changePriority("#f674ad");
+        break;
+      case "very high":
+        changePriority("#aa87f5");
+        break;
+      default:
+        changePriority("#131313");
+    }
   }
+}
+const groupTitleCross = document.createElement("div");
+const viewShow = document.querySelector(".viewShow");
+groupTitleCross.classList.add("flex");
+showInfo.appendChild(groupTitleCross);
+const view = document.querySelectorAll(".view");
+view.forEach((e) => {
+  e.addEventListener("click", (a) => {
+    divAside.forEach(
+      (a) => (a.style.boxShadow = "0px 0px 40px 0px rgba(0, 0, 0, 0.2)")
+    );
+    main.appendChild(showInfo);
+    groupTitleCross.appendChild(title);
+    groupTitleCross.appendChild(hideView);
+    title.innerHTML =
+      a.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(
+        ".titleAside"
+      ).textContent;
+    paragraphe.innerHTML =
+      a.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(
+        ".paragraphAside"
+      ).textContent;
+    showInfo.appendChild(paragraphe);
+    viewShow.classList.toggle("showViewOpacity");
+    const menuBurger = document.querySelectorAll(".menuBurger");
+    menuBurger.forEach((e) => e.classList.add("none"));
+  });
+});
+
+showInfo.style.animationFillMode = "forwards";
+hideView.addEventListener("click", () => {
+  viewShow.classList.toggle("showViewOpacity");
+  showInfo.remove();
 });

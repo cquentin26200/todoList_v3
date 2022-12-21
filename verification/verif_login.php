@@ -17,7 +17,7 @@ try {
             setcookie("password", "", time() - (84600 * 30), "/");
             setcookie("checked", "", time() - (84600 * 30), "/");
         }
-        $_SESSION["user_id"] = $ligne["id_user"];
+        $_SESSION["connect"] = $ligne["id_user"];
         header("Location: ../index.php");
     } else {
         if ($_POST["email"] != $ligne["email"] || $_POST["password"] != $ligne["password"]) {

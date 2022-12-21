@@ -1,3 +1,8 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -8,7 +13,6 @@ body {
   color: #768492;
   margin: 0;
   background-color: #f3f6fd;
-  padding: 5rem 0;
 }
 
 ul {
@@ -48,11 +52,47 @@ img {
   background-color: white;
 }
 
-main.newNote .icons .iconSelected {
+main:where(.newNote, .edit) .primaryInfo .icons .iconSelected {
   background-color: #131313;
   color: white;
   -webkit-box-shadow: 0 0 0 3px #768492;
           box-shadow: 0 0 0 3px #768492;
+}
+
+@-webkit-keyframes animViewShow {
+  from {
+    top: 45%;
+  }
+  to {
+    top: 50%;
+  }
+}
+
+@keyframes animViewShow {
+  from {
+    top: 45%;
+  }
+  to {
+    top: 50%;
+  }
+}
+
+@-webkit-keyframes animViewHide {
+  0% {
+    top: 50%;
+  }
+  50% {
+    top: 45%;
+  }
+}
+
+@keyframes animViewHide {
+  0% {
+    top: 50%;
+  }
+  50% {
+    top: 45%;
+  }
 }
 
 body {
@@ -254,21 +294,22 @@ main.error404 p {
   margin-top: 1rem;
 }
 
-main.newNote {
+main.newNote, main.edit {
   padding: 0 5rem;
+  margin-top: 5rem;
   height: 100%;
   width: 100%;
 }
 
-main.newNote .primaryInfo {
+main.newNote .primaryInfo, main.edit .primaryInfo {
   width: 70%;
 }
 
-main.newNote .newNote {
+main.newNote .newNote, main.edit .newNote {
   width: 87%;
 }
 
-main.newNote .moreInfo {
+main.newNote .moreInfo, main.edit .moreInfo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,25 +318,25 @@ main.newNote .moreInfo {
           align-items: center;
 }
 
-main.newNote .header-main {
+main.newNote .header-main, main.edit .header-main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-main.newNote .header-main span + span {
+main.newNote .header-main span + span, main.edit .header-main span + span {
   margin-left: 4rem;
 }
 
-main.newNote .form-control {
+main.newNote .form-control, main.edit .form-control {
   margin-bottom: 1.5rem;
 }
 
-main.newNote div div {
+main.newNote div div, main.edit div div {
   color: #131313;
 }
 
-main.newNote div div:first-of-type a {
+main.newNote div div:first-of-type a, main.edit div div:first-of-type a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -308,11 +349,11 @@ main.newNote div div:first-of-type a {
   display: flex;
 }
 
-main.newNote div div:first-of-type a i {
+main.newNote div div:first-of-type a i, main.edit div div:first-of-type a i {
   margin-right: 5px;
 }
 
-main.newNote div div h1 {
+main.newNote div div h1, main.edit div div h1 {
   width: 100%;
   margin: 0;
   color: #131313;
@@ -321,11 +362,11 @@ main.newNote div div h1 {
   font-size: 2.1rem;
 }
 
-main.newNote form {
+main.newNote form, main.edit form {
   margin-top: 8rem;
 }
 
-main.newNote form h2 {
+main.newNote form h2, main.edit form h2 {
   color: #131313;
   font-weight: normal;
   font-size: 1.8rem;
@@ -333,7 +374,7 @@ main.newNote form h2 {
   margin-top: 0;
 }
 
-main.newNote #title {
+main.newNote #title, main.edit #title {
   width: 100%;
   height: 4rem;
   padding: 0 1rem;
@@ -343,7 +384,7 @@ main.newNote #title {
   transition: 0.25s;
 }
 
-main.newNote #title:focus {
+main.newNote #title:focus, main.edit #title:focus {
   -webkit-box-shadow: 0px 0px 0px 1px black;
           box-shadow: 0px 0px 0px 1px black;
 }
@@ -351,11 +392,14 @@ main.newNote #title:focus {
 main.newNote #title,
 main.newNote #date,
 main.newNote .description,
-main.newNote #priority {
+main.newNote #priority, main.edit #title,
+main.edit #date,
+main.edit .description,
+main.edit #priority {
   border: 1px solid #dcdddf;
 }
 
-main.newNote .description {
+main.newNote .description, main.edit .description {
   padding: 1rem;
   line-height: 2;
   font-size: 1.5rem;
@@ -368,12 +412,12 @@ main.newNote .description {
   transition: 0.25s;
 }
 
-main.newNote .description:focus {
+main.newNote .description:focus, main.edit .description:focus {
   -webkit-box-shadow: 0px 0px 0px 1px black;
           box-shadow: 0px 0px 0px 1px black;
 }
 
-main.newNote #date {
+main.newNote #date, main.edit #date {
   color: #768492;
   font-size: 1.5rem;
   width: 100%;
@@ -384,12 +428,12 @@ main.newNote #date {
   transition: 0.25s;
 }
 
-main.newNote #date:focus {
+main.newNote #date:focus, main.edit #date:focus {
   -webkit-box-shadow: 0px 0px 0px 1px black;
           box-shadow: 0px 0px 0px 1px black;
 }
 
-main.newNote .icons i {
+main.newNote .icons i, main.edit .icons i {
   color: #131313;
   padding: 1rem 1.3rem;
   background-color: white;
@@ -398,16 +442,16 @@ main.newNote .icons i {
   cursor: pointer;
 }
 
-main.newNote .icons i + i {
+main.newNote .icons i + i, main.edit .icons i + i {
   margin-left: 1rem;
 }
 
-main.newNote .icons i:hover {
+main.newNote .icons i:hover, main.edit .icons i:hover {
   background-color: #131313;
   color: white;
 }
 
-main.newNote #priority {
+main.newNote #priority, main.edit #priority {
   width: 100%;
   padding: 1rem;
   text-transform: capitalize;
@@ -419,32 +463,34 @@ main.newNote #priority {
   transition: 0.25s;
 }
 
-main.newNote #priority:focus {
+main.newNote #priority:focus, main.edit #priority:focus {
   -webkit-box-shadow: 0px 0px 0px 1px black;
           box-shadow: 0px 0px 0px 1px black;
 }
 
-main.newNote .option {
+main.newNote .option, main.edit .option {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-top: 3rem;
 }
 
-main.newNote .option div {
+main.newNote .option div, main.edit .option div {
   position: relative;
 }
 
-main.newNote .option div input {
+main.newNote .option div input, main.edit .option div input {
   border-radius: 8px;
   border: 1px solid #131313;
   text-transform: capitalize;
-  width: 8rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   padding-left: 3rem;
   height: 3.3rem;
 }
 
-main.newNote .option div i {
+main.newNote .option div i, main.edit .option div i {
   position: absolute;
   left: 20%;
   top: 50%;
@@ -453,27 +499,27 @@ main.newNote .option div i {
           transform: translateY(-50%);
 }
 
-main.newNote .option div.groupReset i {
+main.newNote .option div.groupReset i, main.edit .option div.groupReset i {
   color: #131313;
 }
 
-main.newNote .option .save {
+main.newNote .option .save, main.edit .option .save {
   background-color: #131313;
   color: white;
   margin-left: 1rem;
   cursor: pointer;
 }
 
-main.newNote .option .reset {
+main.newNote .option .reset, main.edit .option .reset {
   cursor: pointer;
 }
 
-main.newNote .option .reset i {
+main.newNote .option .reset i, main.edit .option .reset i {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-main.newNote .policy {
+main.newNote .policy, main.edit .policy {
   margin-top: 21rem;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -481,53 +527,58 @@ main.newNote .policy {
   text-transform: capitalize;
 }
 
-main.newNote .policy p {
+main.newNote .policy p, main.edit .policy p {
   color: #768492;
 }
 
-main.newNote .policy p:first-of-type {
+main.newNote .policy p:first-of-type, main.edit .policy p:first-of-type {
   margin-right: 1rem;
 }
 
-main.newNote .policy .notePlus {
+main.newNote .policy .notePlus, main.edit .policy .notePlus {
   color: #131313;
 }
 
 aside {
-  margin-left: 10rem;
   width: 30%;
+}
+
+aside,
+div.aside {
+  margin-left: 10rem;
   margin-top: 8rem;
   border-radius: 10px;
   -webkit-transition: color 0.25s, background-color 0.75s;
   transition: color 0.25s, background-color 0.75s;
 }
 
-aside .container {
+aside .container,
+div.aside .container {
   padding: 2rem;
 }
 
-aside .container nav {
+aside .container nav,
+div.aside .container nav {
   top: 3rem;
   position: absolute;
   right: 0;
 }
 
-aside .container nav ul.menuBurger {
+aside .container nav .menuBurger,
+div.aside .container nav .menuBurger {
+  width: 13rem;
+  padding: 5px;
   -webkit-box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
   background-color: white;
   border-radius: 15px;
 }
 
-aside .container nav ul.menuBurger li:active {
-  background-color: #131313;
-}
-
-aside .container nav ul.menuBurger li:active a, aside .container nav ul.menuBurger li:active i {
-  color: white;
-}
-
-aside .container nav ul.menuBurger li a {
+aside .container nav .menuBurger a, aside .container nav .menuBurger input,
+div.aside .container nav .menuBurger a,
+div.aside .container nav .menuBurger input {
+  cursor: pointer;
+  display: block;
   color: #131313;
   border-radius: unset;
   border: none;
@@ -538,48 +589,59 @@ aside .container nav ul.menuBurger li a {
           justify-content: flex-start;
 }
 
-aside .container nav ul.menuBurger li a i {
+aside .container nav .menuBurger a i, aside .container nav .menuBurger input i,
+div.aside .container nav .menuBurger a i,
+div.aside .container nav .menuBurger input i {
   border: none;
 }
 
-aside .container nav ul.menuBurger li:first-of-type a {
+aside .container nav .menuBurger:first-of-type a,
+div.aside .container nav .menuBurger:first-of-type a {
   padding-bottom: 0;
 }
 
-aside .container nav ul.menuBurger li:last-of-type a {
+aside .container nav .menuBurger:last-of-type a,
+div.aside .container nav .menuBurger:last-of-type a {
   padding-top: 0;
 }
 
-aside:hover {
+aside:hover,
+div.aside:hover {
   background-color: #131313;
 }
 
-aside:hover .header-aside .changeIcon,
-aside:hover .header-aside .activeMenuBurger {
+aside:hover .header-aside .activeMenuBurger,
+div.aside:hover .header-aside .activeMenuBurger {
   color: white;
-  border-color: white;
 }
 
 aside:hover p,
-aside:hover h3 {
+aside:hover h3,
+div.aside:hover p,
+div.aside:hover h3 {
   color: white;
 }
 
 aside:hover .userDate p,
-aside:hover .userDate i {
+aside:hover .userDate i,
+div.aside:hover .userDate p,
+div.aside:hover .userDate i {
   color: white;
 }
 
-aside:hover .userDate .after {
+aside:hover .userDate .after,
+div.aside:hover .userDate .after {
   -webkit-transform: translateY(-1rem);
           transform: translateY(-1rem);
 }
 
-aside .paragraphAside {
+aside .paragraphAside,
+div.aside .paragraphAside {
   height: 17rem;
 }
 
-aside .header-aside {
+aside .header-aside,
+div.aside .header-aside {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -589,7 +651,15 @@ aside .header-aside {
           justify-content: space-between;
 }
 
-aside .header-aside i:first-of-type {
+aside .header-aside .activeMenuBurger,
+div.aside .header-aside .activeMenuBurger {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+aside .header-aside i:first-of-type,
+div.aside .header-aside i:first-of-type {
   color: #131313;
   font-size: 2.5rem;
   border: 1px solid #131313;
@@ -597,48 +667,56 @@ aside .header-aside i:first-of-type {
   border-radius: 10px;
 }
 
-aside .header-aside i:last-of-type {
+aside .header-aside i:last-of-type,
+div.aside .header-aside i:last-of-type {
   cursor: pointer;
   font-size: 1.7rem;
   color: #768492;
 }
 
-aside h3 {
+aside h3,
+div.aside h3 {
   text-transform: capitalize;
   color: #131313;
   font-weight: normal;
   font-size: 2.3rem;
 }
 
-aside p {
+aside p,
+div.aside p {
   color: #768492;
   line-height: 1.8;
 }
 
-aside .userDate {
+aside .userDate,
+div.aside .userDate {
   margin-top: 20rem;
 }
 
-aside .userDate div {
+aside .userDate div,
+div.aside .userDate div {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 0 2rem;
 }
 
-aside .userDate p {
+aside .userDate p,
+div.aside .userDate p {
   font-size: 14px;
   color: #131313;
   text-transform: capitalize;
   font-weight: bold;
 }
 
-aside .userDate p i {
+aside .userDate p i,
+div.aside .userDate p i {
   color: #131313;
   margin-right: 5px;
 }
 
-aside .userDate .after {
+aside .userDate .after,
+div.aside .userDate .after {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   background-color: #131313;
@@ -646,5 +724,129 @@ aside .userDate .after {
   height: 4px;
   display: block;
   border-radius: 5px;
+}
+
+main.home {
+  width: 100%;
+  height: 100vh;
+}
+
+main.home > div {
+  padding: 3rem;
+  background-color: white;
+}
+
+main.home > div > div.grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+main.home > div div.aside {
+  overflow: hidden;
+  background-color: white;
+  margin: 0 2rem 0 0;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  width: 100%;
+}
+
+main.home > div div.aside .container {
+  padding-bottom: 0;
+}
+
+main.home > div div.aside .userDate {
+  margin: 0;
+}
+
+main.home > div div.aside .paragraphAside {
+  margin: 0;
+  overflow: hidden;
+  height: 11rem;
+  word-wrap: break-word;
+}
+
+main.home > div div.aside h3 {
+  margin-bottom: 1rem;
+}
+
+main.home h1 {
+  margin: 0 0 2rem 0;
+  color: #131313;
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: normal;
+}
+
+main.home .viewInfo {
+  z-index: 1;
+  width: 30%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-animation: animViewShow 1s;
+          animation: animViewShow 1s;
+  left: 50%;
+  text-align: center;
+  -webkit-box-shadow: 0 0 10px 0px #131313;
+          box-shadow: 0 0 10px 0px #131313;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+main.home .viewInfo h2,
+main.home .viewInfo p {
+  text-align: left;
+  word-wrap: break-word;
+}
+
+main.home .viewInfo > div {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main.home .viewInfo > div h2 {
+  margin-top: 0;
+  color: #131313;
+  font-weight: normal;
+}
+
+main.home .viewInfo > div span {
+  cursor: pointer;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  content: "";
+  display: block;
+  background-color: #768492;
+  width: 1px;
+  height: 20px;
+}
+
+main.home .viewInfo > div span:after {
+  content: "";
+  display: block;
+  background-color: #768492;
+  width: 1px;
+  height: 20px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.showViewOpacity {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: #000;
+  opacity: 0.5;
+  -webkit-transition: .35s;
+  transition: .35s;
 }
 /*# sourceMappingURL=style.css.map */

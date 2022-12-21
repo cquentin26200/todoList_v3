@@ -1,7 +1,7 @@
-<aside>
+<aside class="<?= $_SESSION["idIcon"] ?>">
     <div class="container">
         <div class="header-aside">
-            <i class="changeIcon fa-regular fas fa-calendar-minus"></i>
+            <i id="changeIcon" class="fa-regular fas fa-calendar-minus"></i>
             <i class="activeMenuBurger fa-solid fa-ellipsis"></i>
             <nav>
                 <ul class="menuBurger none">
