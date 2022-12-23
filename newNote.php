@@ -8,7 +8,7 @@ $_SESSION["idIcon"] = uniqid();
 <main class="newNote">
     <div class="flex header-main">
         <div class="flex newNote">
-            <h1>new note</h1>
+            <h1>new note <?= !empty($_GET["name"]) ? "for ". $_GET["name"] : "" ?></h1>
             <a href="index.php"><i class="fa-solid fa-angles-left"></i>back</a>
         </div>
         <div class="moreInfo">
@@ -62,15 +62,16 @@ $_SESSION["idIcon"] = uniqid();
                     </div>
                 </div>
                 <input type="hidden" name="icon" class="changeIconAside" value="fa-regular fas fa-calendar-minus">
+                <input type="hidden" name="page" value="<?= isset($_GET["page"]) ? $_GET["page"] : "" ?>">
             </form>
         </div>
         <?php include_once "includes/aside.php" ?>
     </div>
-    <div class="flex policy">
+    <div class="flex policy">w
         <div class="flex">
             <p>privacy policy</p>
             <p>terms of use</p>
-        </div>
+        </div>w
         <div class="flex">
             <p>2022@</p>
             <p class="notePlus">NotePlus.</p>

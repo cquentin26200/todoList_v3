@@ -1,0 +1,100 @@
+main.home, main.bin {
+  display: grid;
+  grid-template-columns: 1.5fr 5fr;
+  grid-template-areas: "nav content";
+ 
+  i,
+  svg {
+    margin-right: 1rem;
+  }
+  > div {
+    grid-area: content;
+  }
+}
+nav {
+  grid-area: nav;
+  padding: 1rem;
+  .new {
+    margin-bottom: 3rem;
+    position: relative;
+    width: 20rem;
+    padding: 1rem;
+    background-color: #1f1c2f;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    a {
+      display: block;
+    }
+    a,
+    i {
+      color: $white-color;
+    }
+    i {
+      font-size: 1.3rem;
+    }
+    i.fa-angle-down {
+      background-color: #07060e;
+      position: absolute;
+      top: 50%;
+      display: flex;
+      align-items: center;
+      transform: translateY(-50%);
+      width: 4rem;
+      margin: 0;
+      height: 99%;
+      right: 0%;
+      justify-content: center;
+      border-radius: 0 10px 10px 0;
+    }
+    i.fa-plus {
+      margin-right: 2rem;
+    }
+    .newThings {
+      position: absolute;
+      animation: animThings 0.5s forwards;
+      left: 0;
+      width: 20rem;
+      border-radius: 10px;
+      background-color: $white-color;
+      box-shadow: 0 2px 4px 0px rgba($color: $color-secondary, $alpha: 0.3);
+      li {
+        padding: 1rem;
+        &:hover a {
+          color: #292929;
+        }
+      }
+      a,
+      i {
+        color: #363636;
+      }
+    }
+  }
+  a {
+    text-transform: capitalize;
+  }
+  .otherLink {
+    li {
+      a {
+        transition: 0.25s;
+        color: $color-primary;
+        display: flex;
+        align-items: center;
+        width: 20rem;
+        i {
+          margin: 0 0 0 auto;
+        }
+        &:hover {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+  .newFile {
+    margin-left: 1rem;
+    li {
+      margin: 1rem; 
+    }
+  }
+}

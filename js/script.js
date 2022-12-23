@@ -79,24 +79,35 @@ if (allIcons[0]) {
   });
 }
 
-const titleAside = document.querySelector(".titleAside");
+const titleAside = document.querySelectorAll(".titleAside");
 const titleExample = document.querySelector("#title");
-
-if (titleExample) {
-  titleAside.textContent = titleExample.value;
-  titleExample.addEventListener("input", () => {
-    titleAside.textContent = titleExample.value;
-    if (titleExample.value == "") {
-      titleAside.textContent = "example note";
+titleAside.forEach((e) => {
+  if (titleExample) {
+    if (titleExample.value != "") {
+      e.textContent = titleExample.value;
+    } else {
+      e.textContent = "example note";
     }
-  });
-}
+    titleExample.addEventListener("input", () => {
+      if (titleExample.value == "") {
+        e.textContent = "example note";
+      } else {
+        e.textContent = titleExample.value;
+      }
+    });
+  }
+});
 
 const description = document.querySelector(".description");
 const paragraphAside = document.querySelector(".paragraphAside");
 
 if (description) {
-  paragraphAside.textContent = description.value;
+  if (description.textContent == "") {
+    paragraphAside.textContent =
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum debitis aut eum, quam eius sint consequuntur fuga sequi ducimus vel cumque perspiciatis, sit ratione accusantium recusandae dignissimos. Expedita, voluptatem veritatis?";
+  } else {
+    paragraphAside.textContent = description.value;
+  }
   description.addEventListener("input", () => {
     paragraphAside.textContent = description.value;
     if (description.value == "") {
@@ -232,33 +243,79 @@ if (allDifficulty) {
 const groupTitleCross = document.createElement("div");
 const viewShow = document.querySelector(".viewShow");
 groupTitleCross.classList.add("flex");
+const file = document.querySelector(".file");
 showInfo.appendChild(groupTitleCross);
 const view = document.querySelectorAll(".view");
+
 view.forEach((e) => {
-  e.addEventListener("click", (a) => {
-    divAside.forEach(
-      (a) => (a.style.boxShadow = "0px 0px 40px 0px rgba(0, 0, 0, 0.2)")
-    );
-    main.appendChild(showInfo);
-    groupTitleCross.appendChild(title);
-    groupTitleCross.appendChild(hideView);
-    title.innerHTML =
-      a.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(
-        ".titleAside"
-      ).textContent;
-    paragraphe.innerHTML =
-      a.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector(
-        ".paragraphAside"
-      ).textContent;
-    showInfo.appendChild(paragraphe);
-    viewShow.classList.toggle("showViewOpacity");
-    const menuBurger = document.querySelectorAll(".menuBurger");
-    menuBurger.forEach((e) => e.classList.add("none"));
-  });
+  e.addEventListener("click", (a) => test(a));
 });
+
+if (document.querySelector(".file")) {
+  file.addEventListener("click", (a) => {
+    test(a);
+  });
+}
+const form = document.createElement("form");
+const input = document.createElement("input");
+const submit = document.createElement("input");
+function test(a) {
+  divAside.forEach(
+    (a) => (a.style.boxShadow = "0px 0px 40px 0px rgba(0, 0, 0, 0.2)")
+  );
+  main.appendChild(showInfo);
+  document.body.style.overflow = "hidden";
+  if (a.target.classList.contains("view")) {
+    groupTitleCross.appendChild(title);
+    showInfo.appendChild(paragraphe);
+    title.innerHTML = a.target
+      .closest(".container")
+      .querySelector(".titleAside").textContent;
+    paragraphe.innerHTML = a.target
+      .closest(".container")
+      .querySelector(".paragraphAside").textContent;
+  } else {
+    title.remove();
+    paragraphe.remove();
+    form.method = "post";
+    form.action = "../../todoList_v3/verification/verif_file.php";
+    groupTitleCross.appendChild(form);
+    input.type = "text";
+    input.name = "name";
+    input.id = "name";
+    form.appendChild(input);
+
+    submit.type = "submit";
+    submit.value = "Envoyer";
+    form.appendChild(submit);
+  }
+  groupTitleCross.appendChild(hideView);
+  viewShow.classList.toggle("showViewOpacity");
+  const menuBurger = document.querySelectorAll(".menuBurger");
+  menuBurger.forEach((e) => e.classList.add("none"));
+}
 
 showInfo.style.animationFillMode = "forwards";
 hideView.addEventListener("click", () => {
+  form.remove();
+  input.remove();
+  submit.remove();
+  document.body.style.overflow = "visible";
   viewShow.classList.toggle("showViewOpacity");
   showInfo.remove();
+  divAside.forEach((a) => (a.style.boxShadow = "unset"));
 });
+const newMenu = document.querySelector(".new");
+const newMenuChild = document.querySelector(".new ul");
+if (newMenu) {
+  newMenu.addEventListener("click", () => {
+    newMenuChild.classList.toggle("none");
+    newMenuChild.classList.toggle("newThings");
+  });
+}
+
+const folder = document.querySelector(".folder");
+const newFile = document.querySelector(".newFile");
+if (folder) {
+  folder.addEventListener("click", () => newFile.classList.toggle("none"));
+}

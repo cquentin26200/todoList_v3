@@ -95,6 +95,51 @@ main:where(.newNote, .edit) .primaryInfo .icons .iconSelected {
   }
 }
 
+@-webkit-keyframes animThings {
+  from {
+    top: 3rem;
+  }
+  to {
+    top: 4.2rem;
+  }
+}
+
+@keyframes animThings {
+  from {
+    top: 3rem;
+  }
+  to {
+    top: 4.2rem;
+  }
+}
+
+@-webkit-keyframes animSvg {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes animSvg {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.svg-icon {
+  cursor: pointer;
+}
+
+li:hover path {
+  -webkit-animation: animSvg 1s forwards;
+          animation: animSvg 1s forwards;
+}
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -726,17 +771,17 @@ div.aside .userDate .after {
   border-radius: 5px;
 }
 
-main.home {
+main.home, main.bin {
   width: 100%;
   height: 100vh;
 }
 
-main.home > div {
+main.home > div, main.bin > div {
   padding: 3rem;
   background-color: white;
 }
 
-main.home > div > div.grid {
+main.home > div > div.grid, main.bin > div > div.grid {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -744,7 +789,7 @@ main.home > div > div.grid {
   gap: 20px;
 }
 
-main.home > div div.aside {
+main.home div.aside, main.bin div.aside {
   overflow: hidden;
   background-color: white;
   margin: 0 2rem 0 0;
@@ -754,26 +799,26 @@ main.home > div div.aside {
   width: 100%;
 }
 
-main.home > div div.aside .container {
+main.home div.aside .container, main.bin div.aside .container {
   padding-bottom: 0;
 }
 
-main.home > div div.aside .userDate {
+main.home div.aside .userDate, main.bin div.aside .userDate {
   margin: 0;
 }
 
-main.home > div div.aside .paragraphAside {
+main.home div.aside .paragraphAside, main.bin div.aside .paragraphAside {
   margin: 0;
   overflow: hidden;
   height: 11rem;
   word-wrap: break-word;
 }
 
-main.home > div div.aside h3 {
+main.home div.aside h3, main.bin div.aside h3 {
   margin-bottom: 1rem;
 }
 
-main.home h1 {
+main.home h1, main.bin h1 {
   margin: 0 0 2rem 0;
   color: #131313;
   text-transform: capitalize;
@@ -781,7 +826,7 @@ main.home h1 {
   font-weight: normal;
 }
 
-main.home .viewInfo {
+main.home .viewInfo, main.bin .viewInfo {
   z-index: 1;
   width: 30%;
   height: -webkit-max-content;
@@ -801,24 +846,25 @@ main.home .viewInfo {
 }
 
 main.home .viewInfo h2,
-main.home .viewInfo p {
+main.home .viewInfo p, main.bin .viewInfo h2,
+main.bin .viewInfo p {
   text-align: left;
   word-wrap: break-word;
 }
 
-main.home .viewInfo > div {
+main.home .viewInfo > div, main.bin .viewInfo > div {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-main.home .viewInfo > div h2 {
+main.home .viewInfo > div h2, main.bin .viewInfo > div h2 {
   margin-top: 0;
   color: #131313;
   font-weight: normal;
 }
 
-main.home .viewInfo > div span {
+main.home .viewInfo > div span, main.bin .viewInfo > div span {
   cursor: pointer;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
@@ -829,7 +875,7 @@ main.home .viewInfo > div span {
   height: 20px;
 }
 
-main.home .viewInfo > div span:after {
+main.home .viewInfo > div span:after, main.bin .viewInfo > div span:after {
   content: "";
   display: block;
   background-color: #768492;
@@ -846,7 +892,147 @@ main.home .viewInfo > div span:after {
   top: 0;
   background-color: #000;
   opacity: 0.5;
-  -webkit-transition: .35s;
-  transition: .35s;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+}
+
+main.home, main.bin {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1.5fr 5fr;
+      grid-template-columns: 1.5fr 5fr;
+      grid-template-areas: "nav content";
+}
+
+main.home i,
+main.home svg, main.bin i,
+main.bin svg {
+  margin-right: 1rem;
+}
+
+main.home > div, main.bin > div {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: content;
+}
+
+nav {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: nav;
+  padding: 1rem;
+}
+
+nav .new {
+  margin-bottom: 3rem;
+  position: relative;
+  width: 20rem;
+  padding: 1rem;
+  background-color: #1f1c2f;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+nav .new a {
+  display: block;
+}
+
+nav .new a,
+nav .new i {
+  color: white;
+}
+
+nav .new i {
+  font-size: 1.3rem;
+}
+
+nav .new i.fa-angle-down {
+  background-color: #07060e;
+  position: absolute;
+  top: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 4rem;
+  margin: 0;
+  height: 99%;
+  right: 0%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 0 10px 10px 0;
+}
+
+nav .new i.fa-plus {
+  margin-right: 2rem;
+}
+
+nav .new .newThings {
+  position: absolute;
+  -webkit-animation: animThings 0.5s forwards;
+          animation: animThings 0.5s forwards;
+  left: 0;
+  width: 20rem;
+  border-radius: 10px;
+  background-color: white;
+  -webkit-box-shadow: 0 2px 4px 0px rgba(19, 19, 19, 0.3);
+          box-shadow: 0 2px 4px 0px rgba(19, 19, 19, 0.3);
+}
+
+nav .new .newThings li {
+  padding: 1rem;
+}
+
+nav .new .newThings li:hover a {
+  color: #292929;
+}
+
+nav .new .newThings a,
+nav .new .newThings i {
+  color: #363636;
+}
+
+nav a {
+  text-transform: capitalize;
+}
+
+nav .otherLink li a {
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
+  color: #768492;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20rem;
+}
+
+nav .otherLink li a i {
+  margin: 0 0 0 auto;
+}
+
+nav .otherLink li a:hover {
+  color: #131313;
+}
+
+nav .newFile {
+  margin-left: 1rem;
+}
+
+nav .newFile li {
+  margin: 1rem;
 }
 /*# sourceMappingURL=style.css.map */

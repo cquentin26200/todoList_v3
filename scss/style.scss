@@ -114,6 +114,36 @@ main:where(.newNote, .edit) .primaryInfo .icons .iconSelected {
   }
 }
 
+@keyframes animThings {
+  from {
+    top: 3rem;
+  }
+
+  to {
+    top: 4.2rem;
+  }
+}
+
+@keyframes animSvg {
+  from {
+    stroke-dashoffset: 100;
+  }
+
+  to {
+    stroke-dashoffset: 0
+  }
+}
+
+.svg-icon {
+  cursor: pointer;
+}
+
+li {
+  &:hover path {
+    animation: animSvg 1s forwards;
+  }
+}
+
 //import
 
 @import "includes/login-register";
@@ -121,3 +151,4 @@ main:where(.newNote, .edit) .primaryInfo .icons .iconSelected {
 @import "includes/newNote";
 @import "includes/newNoteAside";
 @import "includes/asideIndex";
+@import "includes/main";

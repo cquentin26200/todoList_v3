@@ -18,8 +18,8 @@ $ligne = $resultat->fetch();
 <main class="edit">
     <div class="flex header-main">
         <div class="flex newNote">
-            <h1>new note</h1>
-            <a href="index.php"><i class="fa-solid fa-angles-left"></i>back</a>
+            <h1>edit your note</h1>
+            <a href="../index.php"><i class="fa-solid fa-angles-left"></i>back</a>
         </div>
         <div class="moreInfo">
             <span><i class="fa-regular fa-envelope"></i></span>

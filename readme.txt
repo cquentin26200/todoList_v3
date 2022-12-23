@@ -1,0 +1,2 @@
+A l'appuie du bouton new folder un nouveau lien se créer, ce lien redirigeras toujours sur le même fichier.
+Le bouton seras dans un formulaire avec un uniqid qui renveras vers une page qui verifiras si le uniqid est égal au uniqid d'un post dans la bdd

@@ -34,3 +34,4 @@ function asideColor($color, $icon, $title, $description, $date, $id)
     </div>
     HTML;
 }
+

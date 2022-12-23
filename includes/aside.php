@@ -16,7 +16,7 @@
     <div class="userDate">
         <div class="flex">
             <p><i class="fa-solid fa-user"></i>only me</p>
-            <p><i class="fa-solid fa-calendar-days"></i><?= str_replace("-", " ", $ligne["date"]) ?></p>
+            <p><i class="fa-solid fa-calendar-days"></i><?= isset($ligne["date"]) ? str_replace("-", " ", $ligne["date"]) : str_replace("-", " ", date("Y-m-d")) ?></p>
         </div>
         <span class="after"></span>
     </div>
